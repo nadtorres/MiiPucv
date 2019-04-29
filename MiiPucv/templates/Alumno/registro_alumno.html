@@ -1,0 +1,134 @@
+{% extends 'Base/base.html' %}
+{% block content %}
+{% load bootstrap4 %}
+
+<body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<div class="container">
+    <div class="form-group">
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li>                
+                <div class="{{ message.tags }}" style="height:35px; width:100%; text-align: center" > {{ message }}</div>          
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+</div>
+<form method="post">
+    {% csrf_token %}
+    <div class="row justify-content-md-center">
+        <div class="col-md-8 col-md-offset-2">
+        <legend class="text-center header"> Registro Alumno </legend>
+            <div class="form-group">
+                <label for ="{{ form2.nombre.nombre }}">{{form2.nombre.label}}</label>
+                {{ form2.media }} 
+                {{form2.nombre}}
+            </div>
+        </div>
+
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-group">
+                <label for ="{{ form2.apellido_pat.apellido_pat }}">{{form2.apellido_pat.label}}</label>
+                {{form2.apellido_pat}}
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-group">
+                <label for ="{{ form2.apellido_mat.apellido_mat }}">{{form2.apellido_mat.label}}</label>
+                {{form2.apellido_mat}}
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-group">
+                <label for ="{{ form2.rut.rut }}">{{form2.rut.label}}</label>
+                {{form2.rut}}
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-group">
+                <label for ="{{ form2.telefono.telefono }}">{{form2.telefono.label}}</label>
+                {{form2.telefono}}
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-group">
+                <label for ="{{ form2.fecha_nac.fecha_nac }}">{{form2.fecha_nac.label}}</label>
+                {{ form2.media }} 
+                {{form2.fecha_nac}}
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-group">
+                <label for ="{{ form2.sexo.sexo }}">{{form2.sexo.label}}</label>
+                {{form2.sexo}}
+            </div>
+        </div>
+         <div class="col-md-8 col-md-offset-2">
+            <div class="form-group">
+                <label for ="{{ form2.mail.mail }}">{{form2.mail.label}}</label>
+                {{form2.mail}}
+            </div>
+        </div>     
+         <div class="col-md-8 col-md-offset-2">
+            <div class="form-group">
+                <label for ="{{ form2.beca.beca }}">{{form2.beca.label}}</label>
+                {{form2.beca}}
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+            <hr/>
+        <legend class="text-center header"> Registro Dirección </legend>
+            <div class="form-group">
+                <label for ="{{ form.region.region }}">{{form.region.label}}</label>
+                {{form.region}}
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-group">
+                <label for ="{{ form.provincia.provincia }}">{{form.provincia.label}}</label>
+                {{form.provincia}}
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-group">
+                <label for ="{{ form.comuna.comuna }}">{{form.comuna.label}}</label>
+                {{form.comuna}}
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-group">
+                <label for ="{{ form.direccion.direccion }}">{{form.direccion.label}}</label>
+                {{form.direccion}}
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-md-center">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-group">
+                <input type="submit" value="Guardar" class="btn btn-primary btn-block">
+            </div>
+        </div> 
+    </div>
+</form>
+</div>
+
+</body>
+
+<script>
+$(function () {
+
+    $("#TXTFecha").datepicker({
+        dateFormat: 'yy/mm/dd',//Puedes poner el formato que deseas(dd.mmm.yy | mm/dd/yy | dd-mm-yy ETC)
+        onSelect: function (dateText, inst) {
+            finicio = dateText; //Ésta variable la puedes enviar a tu controlador siempre con el valor actual.
+        }
+    });
+
+    });
+
+</script>
+
+{% endblock content %}

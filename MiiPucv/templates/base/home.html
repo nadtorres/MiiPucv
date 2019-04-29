@@ -1,0 +1,426 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+<head>
+    <meta charset="utf-8">
+    <script src="{% static 'js/jquery-latest.js' %}"></script>
+    <script src="{% static 'js/arriba.js' %}"></script>
+    <title>Bienvenido</title>
+</head>
+
+<body>
+
+{% block content %}
+<span class="ir-arriba">&#x25b2;</span>
+        <main>
+            <section id="banner">
+                <div class="contenedor" id="contenedores">
+                    <h2>Master's Project Aplicación Web</h2>
+                    <p>Aprende, innova, investiga</p>
+                    <a href="">Leer más</a>
+                </div>
+            </section>
+            
+            <section id="bienvenidos">
+            <div class="contenedor">
+                <h2>PROGRAMA DE MAGÍSTER</h2>
+                <hr>
+                <br>
+                <p>El Magíster en Ingeniería Informática de la Pontificia Universidad Católica de Valparaíso es un Programa de postgrado flexible en cuanto al ingreso de los estudiantes, de las áreas de estudio, la carga académica y el horario de clases. Pensado especialmente para profesionales del área de informática que trabajan tanto en la Región de Valparaíso como fuera de ella. <br>
+                Este Programa es impartido por la Escuela de Ingeniería Informática y cuenta con más de 100 estudiantes graduados en los últimos años.</p>
+                </div>
+            </section>
+            
+            <section id="blog">
+            	<br>
+            	<hr>
+            	<br>
+                <h3>Plataforma Web MII</h3>
+                <br>
+                <div class="contenedor">
+                	<p>Master'sProject es una aplicación web orientada a favorecer la gestión de administración de información del área de Magíster de la Escuela de Ingeniería en Informática de la PUCV. Esta aplicación tiene como objetivo ser un referente ante los demás programas de Magíster de la Universidad y así como también, beneficiar la Acreditación del Programa. </p>
+                </div>
+                <br>
+                <br>
+                <br>
+                <br>
+                <div class="contenedor">
+                    <article id="articulo1">
+                        <img src="{% static 'img/agregar.jpg' %}">
+                        <h4>Agrega Alumnos</h4>
+                    </article>
+                    <article id="articulo2">
+                        <img src="{% static 'img/busca.jpg' %}">
+                        <h4>Realiza búsquedas</h4>
+                    </article>
+                    <article id="articulo3">
+                        <img src="{% static 'img/reporte.jpg' %}">
+                        <h4>Genera reportes</h4>
+                    </article>
+                </div>
+            </section>
+            <br>
+            <br>
+            <br>
+            <br>
+            <section id="info">
+                <h3>Proyecto creado para realizar mejoras dentro de la administración y gestión del Programa</h3>
+                <div class="contenedor">
+                    <div class="info-pet">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/PUCV.jpg/592px-PUCV.jpg" alt="">
+                        <h4>PUCV</h4>
+                    </div>
+                    <div class="info-pet">
+                        <img src="http://www.finpucvvirtual.cl/img/logo-ing-inf.png" alt="">
+                        <h4>Escuela Ing.Informática</h4>
+                    </div>
+                    <div class="info-pet">
+                        <img src="{% static 'img/logobueno.jpg' %}" alt="">
+                        <h4>Logo Master'sProject</h4>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <footer id="footerid">
+            <div class="contenedor">
+                <p class="copy">Magíster Informática PUCV &copy; 2018</p>
+                <div class="sociales">
+                    <a class="fontawesome-facebook-sign" href="https://www.facebook.com/mastersproject.mii/" target="_blank"></a>
+                    <a class="fontawesome-twitter" href="https://twitter.com/MastersProject2" target="_blank"></a>
+                    <a class="fontawesome-camera-retro" href="https://www.instagram.com/masters.project/" target="_blank"></a>
+                    <a class="fontawesome-google-plus-sign" href="#" onclick="window_onload()"></a>
+                </div>
+            </div>
+        </footer>
+<script type="text/javascript">
+    function window_onload(){
+        alert("En desarrollo");
+    }
+</script>
+<link rel="stylesheet" type="text/css"> 
+<style type="text/css">
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+@import url(http://weloveiconfonts.com/api/?family=fontawesome|typicons);
+[class*="fontawesome-"]:before {
+  font-family: 'FontAwesome', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+#footerid {
+    height: auto;
+    width: 100%;
+}
+.ir-arriba{
+    display: none;
+    padding: 10px;
+    background: #2369A8;
+    font-size: 20px;
+    color: #fff;
+    cursor: pointer;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    border-radius: 50px;
+}
+
+header {
+    width: 100%;
+    height: 50px;
+    background: #333;
+    color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
+.contenedor {
+    width: 98%;
+    margin: auto;
+}
+
+h1 {
+    float: left;
+}
+
+header .contenedor {
+    display: table;
+}
+
+section {
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+#bienvenidos {
+    text-align: center;
+    width: 100%;
+    height: auto;
+}
+
+footer .contenedor {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-bottom: 25px;
+}
+
+.copy {
+    font-size: 20px;
+}
+
+.sociales {
+    width: 100%;
+    text-align: center;
+    font-size: 28px;
+}
+
+.sociales a {
+    color: #333;
+    text-decoration: none;
+}
+
+@media (min-width:768px) { 
+    .sociales {
+        width: auto;
+    }
+    
+    footer .contenedor {
+        justify-content: space-between;
+    }
+}
+
+
+@media (min-width:1024px) {
+    .contenedor {
+        width: 1000px;
+    }
+}
+
+
+#blog h3, h4 {
+    text-align: center;
+}
+
+#blog .contenedor{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#blog {
+    height: auto;
+    width: 100%;
+}
+
+#blog article {
+    margin: 15px;
+}
+
+#blog img {
+    width: 100%;
+    max-width: 280px;
+}
+#banner {
+    margin-top: 5px;
+    position: relative;
+    color: #606C76;
+    background: #1F618D;
+    height: auto;
+    width: 100%;
+}
+
+#banner img {
+    width: 150px;
+    height: 150px;
+}
+
+#banner .contenedor {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    color: #fff;
+}
+
+#banner h2 {
+    font-size: 28px;
+}
+
+#banner a {
+    display: block;
+    width: 100px;
+    color: #fff;
+    text-decoration: none;
+    padding: 7px;
+    margin-top: 10px;
+    border: 3px solid #fff;
+}
+
+#banner a:hover {
+    background: rgba(51,51,51,0.5);
+}
+
+@media (min-width:480px) {
+    #banner h2 {
+        font-size: 40px;
+    }
+    
+    #banner a {
+        margin-top: 25px;
+    }
+}
+
+@media (min-width:768px) { 
+    #banner {
+        height: 300px;
+        overflow: hidden;
+    }
+    
+    #banner img {
+        height: auto;
+        margin-top: -100px;
+    }
+}
+
+@media (min-width:1024px) { 
+    #banner img {
+        margin-top: -200px;
+    }
+}
+
+#info {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    height: auto;
+    width: 100%;
+}
+
+#info .contenedor {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.info-pet {
+    margin: 20px;
+}
+
+.info-pet img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 7px solid #fff;
+}
+
+
+@media (min-width:480px) {
+    .info-pet {
+        width: 40%;
+    }
+}
+
+
+#articulo1 img {
+    width: 150px;
+    height: 150px;
+
+}
+
+#articulo2 img {
+    width: 150px;
+    height: 150px;
+
+}
+
+#articulo3 img {
+    width: 150px;
+    height: 150px;
+
+}
+
+@media (min-width:1024px) {
+    .info-pet {
+        width: auto;
+    }
+}
+#menu-bar {
+    display: none;
+}
+
+header label {
+    float: right;
+    font-size: 28px;
+    margin: 6px 0;
+    cursor: pointer;
+}
+
+.menu {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(51,51,51,0.9);
+    transition: all 0.5s;
+    transform: translateX(-100%);
+}
+
+.menu a {
+    display: block;
+    color: #fff;
+    height: 50px;
+    text-decoration: none;
+    padding: 15px;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+}
+
+.menu a:hover {
+    background: rgba(255,255,255,0.3);
+}
+
+#menu-bar:checked ~ .menu {
+    transform: translateX(0%);
+}
+
+@media (min-width:1024px) {
+    .menu {
+        position: static;
+        width: auto;
+        height: auto;
+        transform: translateX(0%);
+        float: right;
+        display: flex;
+    }
+    
+    .menu a {
+        border: none;
+    }
+    
+    header label { 
+        display: none;
+    }
+}
+
+.p {
+    color: #616A6B;
+}
+</style>
+
+
+</body>
+
+
+{% endblock %}

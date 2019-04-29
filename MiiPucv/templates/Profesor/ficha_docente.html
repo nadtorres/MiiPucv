@@ -1,0 +1,76 @@
+{% extends 'Base/base.html'%}
+{% block content %} 
+
+<form method="post">
+	{% csrf_token %}
+	<div>
+		<div class="form-group">
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li>
+                <div class="alert alert-success"> {{ message }}</div>
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+		<center>
+			<h1 class="page-header" id="perfilHeader">Ficha Docente</h1>
+		</center>
+	<div>
+		<div>
+			<div>
+				<h3 style="text-align: center;" id="h3"><p><small> Información básica</small></p></h3>
+					<div>
+						<hr>
+						{% for profesor in profesor %}
+							<h6 id="usuario"> {{ profesor.nombre}} {{profesor.apellido_pat}} {{profesor.apellido_mat}} </h6>
+							<h6 id="usuario"> {{ profesor.rut }}</h6>
+							<h6 id="usuario"> {{ profesor.mail }}</h6>
+							<h6 id="usuario"> {{ profesor.telefono }}</h6>
+						<hr>
+						{% endfor %}
+					</div>
+							<h3 style="text-align: center;" id="h3">Dirección Permanente <p><small> Ubicación </small></p></h3>
+					<div>
+						<hr>
+						{% for direccionprofesor in direccion %}
+							<h6 id="usuario"> Región: {{ direccionprofesor.region.nombre }}</h6>
+							<h6 id="usuario"> Provincia: {{ direccionprofesor.provincia.nombre }}</h6>
+							<h6 id="usuario"> Comuna: {{ direccionprofesor.comuna.nombre }}</h6>
+							<h6>Dirección: {{ direccionprofesor.direccion }}</h6>
+						<hr>
+						{% endfor %}
+					</div>		
+
+							<h3 style="text-align: center;" id="h3">Datos de Grados <p><small> Grados del Docente </small></p></h3>
+					{% if grado %}
+					{% for tipogrado in grado %}
+					<div>
+							<h6>Tipo de Grado:{{ tipogrado.nombre_tipo}} </h6>
+							<h6>Institución de Obtención: {{ tipogrado.institucion }}</h6>
+							<h6>Nombre Grado: {{ tipogrado.nombre}} </h6>
+							<h6>Año de Obtención: {{ tipogrado.anio_obtencion }}</h6>
+							<hr>
+							<br>
+					</div>
+					{% endfor %}
+					{% else %}
+						<center>
+	                    <a class="btn btn-primary" role="button" href="{% url 'agregar_grado' pk=tipogrado.profesor.id %}">
+	                    <i class="fa fa-fw fa-lg fa-plus-circle"></i>Agregar Grado</a>&nbsp;&nbsp;
+					</center>
+					{% endif %}
+			</div>
+		</div>
+	</div>
+	<div>
+</div>
+</div>
+</form>
+
+
+
+
+{% endblock %}

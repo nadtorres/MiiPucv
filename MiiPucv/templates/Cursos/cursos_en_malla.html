@@ -1,0 +1,30 @@
+{% extends 'Base/base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+	<center>
+		<h1 class="page-header" id="perfilHeader">Malla Curricular</h1>
+	</center>
+	<hr>
+	<br>
+	<p> La estructura del plan de estudios es flexible, por lo tanto la repartición de asignaturas optativas por semestres es recomendable, pero no obligatoria. Es decir, que el orden para cursar las asignaturas optativas queda a elección, sujeto a la disponibilidad de cursos, y a lo siguiente:</p>
+	<br>
+	<h4>Las asignaturas obligatorias del programa son: </h4>
+	{% if object_list %}
+	{% for cursos in object_list %}
+	{% if cursos.tipo == "Obligatorio" %}
+	<a href="{% url 'obligatorios_optativos' cursos.pk %}" title="Ir a Información básica de {{ cursos.nombre }}">{{ cursos.sigla }} - {{cursos.nombre}}</a><br>
+	{% endif %}
+	{% endfor %}
+	{% endif %}
+	<br>
+	<h4>Las asignaturas optativas del programa son: </h4>
+	{% if object_list %}
+	{% for cursos in object_list %}
+	{% if cursos.tipo == "Optativo" %}
+	<a href="{% url 'obligatorios_optativos' cursos.pk %}">{{ cursos.sigla }} - {{cursos.nombre}}</a><br>
+	{% endif %}
+	{% endfor %}
+	{% endif %}
+
+{% endblock %}

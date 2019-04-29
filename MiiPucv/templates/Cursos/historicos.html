@@ -1,0 +1,130 @@
+{% extends 'Base/base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+	<center>
+		<h2 class="page-header" id="perfilHeader">Historial de Cursos</h2>
+	</center>
+	<hr>
+
+	<center>
+	<div class="alert alert-primary alert-dismissible fade show" role="alert">
+		<strong>¡Bienvenido!</strong> En esta sección encontrarás las 30 entradas más recientes. <br> Utiliza los campos de filtrado para especificar tu búsqueda.
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		    <span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	</center>
+
+	<center>
+		{% if lista_detalle %}
+		{% for curso in lista_detalle %}
+		<label style="margin-left:10px;"><b>Seleccione un año : </b></label>
+
+			<select class="dropdown" id="dropdown" name='anio_curso'>
+				<option selected="true" disabled="disabled">Seleccione</option>
+			    <option value="anio">{{ detalle_curso.anio_cursado}}</option>
+			</select>
+			<label style="margin-left:10px;"><b>Seleccione un semestre : </b></label>
+			<select class="dropdown" id="dropdown" name='semestre'>
+				<option selected="true" disabled="disabled">Seleccione</option>
+			    <option value="semestre">{{ detalle_curso.semestre}}</option>
+			</select>
+			</select>
+			<label style="margin-left:10px;"><b>Seleccione una sigla : </b></label>
+			<select class="dropdown" id="dropdown" name='semestre'>
+				<option selected="true" disabled="disabled">Seleccione</option>
+			    <option value="sigla">{{ detalle_curso.curso.sigla}}</option>
+			</select>
+			{% endfor %}
+			{% endif %}
+
+			<!-- <label style="margin-left:10px;"><b>Seleccione un año : </b></label>
+
+			<select class="dropdown" id="dropdown" name='anio_curso'>
+				<option selected="true" disabled="disabled">Seleccione</option>
+			    <option value="anio">2018</option>
+			</select>
+			<label style="margin-left:10px;"><b>Seleccione un semestre : </b></label>
+			<select class="dropdown" id="dropdown" name='semestre'>
+				<option selected="true" disabled="disabled">Seleccione</option>
+			    <option value="semestre">1er semestre</option>
+			    <option value="semestre2">2do semestre</option>
+			</select>
+			</select>
+			<label style="margin-left:10px;"><b>Seleccione una sigla : </b></label>
+			<select class="dropdown" id="dropdown" name='semestre'>
+				<option selected="true" disabled="disabled">Seleccione</option>
+			    <option value="sigla"></option>
+			</select> -->
+		<td>
+			<a href="" class="btn btn-info" title="Filtrar">Filtrar</a>
+		</td>
+	</center>
+	<br>
+	<br>
+
+		<table id="tablaAlumnos" class="table table-bordered responsive">
+		<thead>
+			<tr>
+				<tr>
+					<td><center><b>Año</b></center></td>
+					<td><center><b>Semestre</b></center></td>
+					<td><center><b>Sigla</b></center></td>
+					<td><center><b>Nombre</b></center></td>
+					<td><center><b>Tipo</b></center></td>
+					<td><center><b>Profesor</b></center></td>
+					<td><center><b>Inscritos</b></center></td>
+					<td><center><b>Detalles</b></center></td>
+					<td><center><b>Reportes</b></center></td>
+				</tr>
+			</tr>
+		</thead>
+
+
+		<tbody>
+			{% for detalle_curso in lista_detalle %}
+			<tr>
+				<td>{{ detalle_curso.anio_cursado }}</a></td>
+				<td><center>{{ detalle_curso.semestre }}</center></td>
+				<td>{{ detalle_curso.curso.sigla }}</td>
+				<td>{{ detalle_curso.curso.nombre }}</td>
+				<td>{{ detalle_curso.curso.tipo }}</td>
+				<td>{{ detalle_curso.profesor.nombre}} {{detalle_curso.profesor.apellido_pat}} {{detalle_curso.profesor.apellido_mat}}</td>
+				<td><center>{{ detalle_curso.inscritos}}</center></td>
+				<td>
+					<a href="{% url 'detalle_curso' detalle_curso.curso.pk %}" class="btn btn-info " title="Ir a Detalles">Más</a>
+				</td>
+				<td>
+					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+					 Generar Reporte
+					</button>
+							<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="exampleModalLabel">Generar Reporte {{detalle_curso.curso.nombre}} {{detalle_curso.curso.sigla}}</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body">
+		        A continuación, se descargará un archivo en formato PDF que contiene la información del curso. <br><br>
+		        Apreta el botón 'Generar' para comenzar la descarga.
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+		        <button type="button" class="btn btn-primary">Generar</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>				
+				</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+		</table>
+
+
+
+{% endblock %}

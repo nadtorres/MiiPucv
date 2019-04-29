@@ -1,0 +1,28 @@
+{% extends 'Base/base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+	<center>
+		<h3 class="page-header" id="perfilHeader">Cursos Obligatorios<p><small>Información básica</small></p></h3>
+	</center>
+	{% if cursos %}
+	<div>
+		<hr>
+		<h4> <b>Descripción</b></h4>
+			<p>{{ cursos.descripcion }} </p>
+	</div>
+	<div>
+		<hr>
+		<h6> <b>Nombre: </b>{{ cursos.nombre }}</h6>
+		<h6> <b>Sigla: </b>{{ cursos.sigla }}</h6>
+		<h6> <b>Créditos: </b>{{ cursos.creditos }}</h6>
+		<h6> <b>Tipo Curso: </b>{{ cursos.tipo }}</h6>
+	</div>
+	{% endif %}
+	<br>
+	<center>
+		<a class="btn btn-info" href=""><i class="fa fa-fw fa-lg fa-plus-circle"></i>Ver Más</a>
+	</center>
+
+
+{% endblock %}
