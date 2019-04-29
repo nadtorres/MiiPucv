@@ -1,0 +1,57 @@
+{% extends 'Base/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+  <center>
+    <h1 class="page-header" id="perfilHeader">Docentes registrados</h1>
+  </center>
+<table id="tablaDocentes" class="table table-responsive table-bordered">
+    <thead>
+      <tr>
+        <td colspan="5" align="center" width="10" height="10">Datos Docente</td>
+        <td colspan="3" align="center" width="10" height="10">Acciones</td>
+        <tr>
+          <td>Rut</td>
+          <td>Nombres</td>
+          <td>Apellido Paterno</td>
+          <td>Apellido Materno</td>
+          <td>Email</td>
+          <td>Ficha Académica</td>
+          <td>Ver Cursos</td>
+          <td>Datos Contacto</td>
+      </tr>
+    </tr>
+  </thead>
+  <tbody>
+  {% if object_list %}
+  {% for profesor in object_list %}
+  <tr>
+    <td><a href="{% url 'ficha_docente' profesor.pk %}" title="Ir a Ficha Académica"><u>{{ profesor.rut }}</u></a></td>
+    <td>{{ profesor.nombre }}</td>
+    <td>{{ profesor.apellido_pat }}</td>
+    <td>{{ profesor.apellido_mat }}</td>
+    <td>{{ profesor.mail }}</td>
+    <td>
+      <a href="{% url 'ficha_docente' profesor.pk %}" class="btn btn-success" title="Ir a Ficha Docente">Ficha Docente</a>
+    </td>
+    <td>
+      <a href="" class="btn btn-success" title="Ver datos de Cursos">Cursos</a>
+    </td>
+    <td>
+      <a href="{% url 'datos_direccion' profesor.pk %}" class="btn btn-success" title="Ver datos de Contacto">Contacto</a>
+    </td>
+  </tr>
+  {% endfor %}
+  {% else %}
+  <h1 align="center">No hay registros de Profesores</h1>
+  {% endif %}
+  </tbody>
+</table>
+
+<style>
+td {
+  font-size: 15px;
+}
+</style>
+
+{% endblock content %}

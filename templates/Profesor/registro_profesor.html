@@ -1,0 +1,44 @@
+{% extends 'Base/base.html' %}
+{% block content %}
+{% load bootstrap4 %}
+
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li>
+                <div class="alert alert-success"> {{ message }}</div>
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+<form method="post">
+    {% csrf_token %}       
+    <div class="row justify-content-md-center">
+     <legend class="text-center header"> Registro Profesor </legend>
+        <div class="col-md-8 col-md-offset-2">
+            {{ form.profesor }}
+            <br>
+        </div>
+     <legend class="text-center header"> Registro Tipo Grado </legend>
+         <div class="col-md-8 col-md-offset-2">
+            {{ form.tipogrado }}
+            <br>
+        </div>
+
+     <legend class="text-center header"> Registro Dirección </legend>
+        <div class="col-md-8 col-md-offset-2">
+            {{ form.direccion }}
+        </div>
+    </div>
+        <div class="row justify-content-md-center">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-group">
+                <input type="submit" value="Guardar" class="btn btn-primary btn-block">
+            </div>
+        </div> 
+    </div>
+</form>
+
+
+{% endblock content %}

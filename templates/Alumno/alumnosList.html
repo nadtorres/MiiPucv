@@ -1,0 +1,61 @@
+{% extends 'Base/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+	<center>
+		<h1 class="page-header" id="perfilHeader">Alumnos registrados</h1>
+	</center>
+<table id="tablaAlumnos" class="table table-responsive table-bordered">
+	<thead>
+		<tr>
+			<td colspan="5" align="center" width="10" height="10">Datos Alumno</td>
+			<td colspan="4" align="center" width="10" height="10">Acciones</td>
+			<tr>
+				<td>Rut</td>
+				<td>Nombres</td>
+				<td>Apellido Paterno</td>
+				<td>Apellido Materno</td>
+				<td>Fecha Nacimiento</td>
+				<td>Ficha Académica</td>
+				<td>Datos Dirección</td>
+				<td>Datos Postulación</td>
+				<td>Avance Curricular</td>
+			</tr>
+		</tr>
+	</thead>
+	<tbody>
+	{% if object_list %}
+	{% for alumno in object_list %}
+	<tr>
+		<td><a href="{% url 'ficha_academica' alumno.pk %}" title="Ir a Ficha Académica"><u>{{ alumno.rut }}</u></a></td>
+		<td>{{ alumno.nombre }}</td>
+		<td>{{ alumno.apellido_pat }}</td>
+		<td>{{ alumno.apellido_mat }}</td>
+		<td>{{ alumno.fecha_nac }}</td>
+		<td>
+			<a href="{% url 'ficha_academica' alumno.pk %}" class="btn btn-info" title="Ir a Ficha Académica">Ficha Académica</a>
+		</td>
+		<td>
+			<a href="{% url 'direccionList' alumno.pk %}" class="btn btn-info" title="Ver datos de Dirección">Dirección</a>
+		</td>
+		<td>
+			<a href="{% url 'datos_postulacion_alumno' alumno.pk %}" class="btn btn-info" title="Ver datos de Postulación">Postulación</a>
+		</td>
+		<td>
+			<a href="{% url 'avance_curricular' alumno.pk %}" class="btn btn-info" title="Ver Avance Curricular Alumno">Avance Curricular</a>
+		</td>
+	</tr>
+	{% endfor %}
+	{% else %}
+	<h1 align="center">No hay registros de Alumnos</h1>
+	{% endif %}
+	</tbody>
+</table>
+
+<style>
+td {
+	font-size: 15px;
+}
+</style>
+
+{% endblock content %}

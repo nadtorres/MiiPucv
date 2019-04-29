@@ -1,0 +1,229 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="{% static 'js/jquery-latest.js' %}"></script>
+    <script src="{% static 'js/arriba.js' %}"></script>
+	<meta http-equiv="X-UA-Compatible" content="ie-edge">
+	<title>Contáctanos</title>
+</head>
+<body>
+	<span class="ir-arriba">&#x25b2;</span>
+	<header class="sec uno">
+	<div class="contenedor">
+		<nav>
+			<div class="logo">
+				<img src="">
+			</div>
+			<div class="enlaces">
+				<a href="{% url 'home' %}">Home</a>
+				<a href="{% url 'sobreNosotros' %}">Quiénes Somos</a>
+			</div>
+		</nav>		
+	</div>
+	<div class="texto">
+		<h1>Master's Project</h1>
+		<p>Aprende, Innova, Investiga</p>
+	</div>
+
+		<div class="sesgouno"></div>
+	</header>
+
+	<section class="sec dos">
+		<div>
+			<br>
+			<br>
+			<h2 align="center">CONTÁCTANOS</h1>
+				<br>
+				<br>
+				<br>
+				<div class="text-decoration"><p align="center">Si deseas información sobre cualquiera de nuestros productos o estás interesado en su distribución, <br>
+				te dejamos nuestros medios de contacto.</p>
+            <section id="info">
+                <div class="contenedor">
+                    <div class="info-pet">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/PUCV.jpg/592px-PUCV.jpg" alt="">
+                        <h4>PUCV<br><small><a href="">magistermii@gmail.com</a></small></h4>
+                    </div>
+                    <div class="info-pet">
+                        <img src="http://www.finpucvvirtual.cl/img/logo-ing-inf.png" alt="">
+                        <h4>Ing. Informática<br><small><a href="">inf.pucv@gmail.com</a></small></h4>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <div>
+                	
+                </div>
+            </section>
+
+			</div>
+		</div>
+	</section>
+			
+			
+
+	<section class="sec tres">
+		<div class="sesgodos"></div>
+	</section>
+</body>
+
+
+
+<style type="text/css">
+
+*{
+	margin: 0;
+	padding: 0;
+}
+
+.ir-arriba{
+    display: none;
+    padding: 10px;
+    background: #2369A8;
+    font-size: 20px;
+    color: #fff;
+    cursor: pointer;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    border-radius: 50px;
+}
+
+h4{
+	font-size: 15px;
+}
+
+body {
+	font-family: 'Lato';
+	font-size: 20px;
+}
+
+.sec {
+	position: relative;
+	width: 100%;
+	height: 100vh;
+	overflow: hidden;
+}
+
+.uno {
+	background: url("{% static 'img/contact.jpg' %}");
+	background-attachment: fixed;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.info-pet {
+    margin: 20px;
+}
+
+.info-pet img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 7px solid #fff;
+}
+
+
+@media (min-width:480px) {
+    .info-pet {
+        width: 40%;
+    }
+}
+
+
+#info {
+    text-align: center;
+    padding: 20px;
+}
+
+#info .contenedor {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.sesgouno{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	border-width: 15vh 0 0 100vw;
+	border-style: solid;
+	border-color: transparent transparent transparent #fff;
+}
+
+.tres {
+	background: url("{% static 'img/contact2.jpg' %}");
+	background-attachment: fixed;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.sesgodos {
+	position: absolute;
+	top: 0;
+	left: 0;
+	border-width: 15vh 100vw 0 0;
+	border-style: solid;
+	border-color: #fff transparent transparent transparent;
+}
+
+nav {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 20px 0;
+}
+
+
+.contenedor {
+	width: 90%;
+	max-width: 1000px;
+	margin: auto;
+}
+
+.enlaces a{
+	color: #6A6A0C;
+	font-size: 18px;
+	text-decoration: none;
+	font-weight: bolder;
+	margin-left: 20px;
+	left: 20px;
+padding:5px;
+margin:5px;
+background-color: #EBEB6B;
+border: solid 1px white;
+border-radius: 50px;
+}
+
+a:hover{
+	text-decoration: underline;
+}
+
+.texto {
+	text-align: center;
+	color: #fff;
+	font-weight: bold;
+	margin: 150px 0;
+
+}
+
+h1{
+	font-size: 100px;
+}
+
+h2{
+	font-size: 80px;
+}
+
+.texto p{
+	font-size: 40px;
+	font-weight: 300;
+}
+
+</style>
+</html>

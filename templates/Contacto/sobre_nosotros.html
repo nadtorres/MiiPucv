@@ -1,0 +1,176 @@
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<title>Quienes Somos</title>
+	<meta charset="utf-8">
+    <script src="{% static 'js/jquery-latest.js' %}"></script>
+	<meta name="viewport" content="width=device=width, user-scalable=no, initial-scale=1, maximun-scale=1, minimum-scale=1">
+	<script src="{% static 'js/arriba.js' %}"></script>
+	<link rel="stylesheet" href="{% static 'css/superslides.css' %}">
+</head>
+<body>
+	<div id="slides">
+		<ul class="slides-container">
+			<li>
+				<img src="{% static 'img/pucv.jpg' %}" alt="">
+				<div class="description">
+					<h2 class="description__title">Pontificia Universidad Católica de Valparaíso</h2>
+					<p class="description__text"> La PUCV es una institución heterogénea y, a través de sus nueve facultades, abarca una amplia variedad de áreas del saber que van desde las artes y las humanidades hasta la ingeniería, pasando por las ciencias básicas, la educación y los estudios teológicos.</p>
+				</div>
+			</li>
+			<li>
+				<img src="{% static 'img/nad.jpg' %}" alt="">
+				<div class="description">
+					<h2 class="description__title">Nadia Soledad Torres Leyton, Jefa Proyecto</h2>
+					<p class="description__text">Responsable de detectar las necesidades de los usuarios y gestionar los recursos económicos, materiales y humanos, para obtener los resultados esperados en los plazos previstos y con la calidad necesaria. Tiene la responsabilidad total del planeamiento y la ejecución acertados de cualquier proyecto. Actualmente cursando su penúltimo semestre en la carrera de pregrado Ing de ejecución Informática, PUCV. </p>
+				</div>
+			</li>
+			<li>
+				<img src="{% static 'img/luchi.jpg' %}" alt="">
+				<div class="description">
+					<h2 class="description__title">Luis Antonio Sandoval Cisternas, Programador</h2>
+					<p class="description__text"> Su objetivo es hacer que el sistema funcionen de forma más eficiente. Esto incluye el estudio de los ordenadores manejan los datos y textos, envían información a impresoras y se vinculan a los sistemas de telecomunicaciones. Actualmente se encuentra cursando su penúltimo semestre en la carrera de pregrado Ing de ejecución Informática, PUCV.</p>
+				</div>
+			</li>
+			<li>
+				<img src="{% static 'img/david.jpg' %}" alt="">
+				<div class="description">
+					<h2 class="description__title">David Norero Rozas, Analista</h2>
+					<p class="description__text"> Encargado del desarrollo de aplicaciones en lo que respecta a su diseño y obtención de los algoritmos, así como de analizar las posibles utilidades y modificaciones necesarias de los sistemas operativos para una mayor eficacia de un sistema informático. Otra misión de estas personas es dar apoyo técnico a los usuarios. Actualmente se encuentra en su último semestre de la carrera de pregrado Ing. de ejecución Informática, PUCV.</p>
+				</div>
+			</li>
+			<li>
+				<img src="{% static 'img/catita.jpg' %}" alt="">
+				<div class="description">
+					<h2 class="description__title">Catalina Patricia Pizarro Aguilera, Arquitecta SW</h2>
+					<p class="description__text"> Encargada de la mejora continua de la Arquitectura y a su vez estar abierto a modificarla utilizando las sugerencias o feedback que se pueda obtener de otros miembros del equipo. Actualmente se encuentra en su penúltimo semestre de la carrera de pregrado Ing. de ejecución Informática, PUCV.</p>
+				</div>
+			</li>
+			<li>
+				<img src="{% static 'img/logotipo-sin-fondo.jpg' %}" alt="">
+			</li>
+		</ul>
+		<nav class="slides-navigation">
+			<a href="" class="next">&#62;</a>
+			<a href="" class="prev">&#60;</a>
+			<span href="{% url 'home' %}" class="ir-home" onclick="boton()">&#8962;</span>
+			<span href="{% url 'home' %}" class="ir-contacto" onclick="contacto()">&#9993;</span>
+		</nav> 
+	</div>
+
+	<script src="{% static 'js/jquery.js' %}"></script>
+	<script src="{% static 'js/jquery.superslides.js' %}"></script>
+		<script> $('#slides').superslides();</script>
+
+<link rel="stylesheet" type="text/css"> 
+<style type="text/css">
+
+.slides-navigation a {
+  position: absolute;
+  display: block;
+  width: 40px;
+  height: 40px;
+  font-size: 30px;
+  text-decoration: none;
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  line-height: 40px;
+  font-weight: bold;
+  border-radius: 50%;
+}
+
+.slides-navigation a:hover {
+	background: #000;
+}
+
+.slides-pagination a {
+  border: 2px solid #fff;
+  border-radius: 15px;
+  width: 20px;
+  height: 20px;
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  zoom: 1;
+  *display: inline;
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGP6zwAAAgcBApocMXEAAAAASUVORK5CYII=");
+  margin: 2px;
+  overflow: hidden;
+  text-indent: -100%;
+}
+
+.description {
+	background: rgba(0,0,0,0.5);
+	color: #fff;
+	padding: 20px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%);
+}
+
+.descripyion1 {
+	background: rgba(0,0,0,0.5);
+	color: #fff;
+	padding: 20px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%);
+}
+
+.ir-home {
+    display: inline-block;
+    padding: 10px;
+    text-decoration: none;
+    background: rgba(0,0,0,0.5);
+    color: #fff;
+    cursor: pointer;
+    position: fixed;
+    top:5px;
+    right:5px;
+    border: 2px solid #fff;
+    border-radius: 50px;
+    width: 40px;
+    height: 40px;
+    font-size: 30px;
+    text-align: center;
+}
+
+.ir-home:hover {
+    background: #000;
+}
+
+.ir-contacto {
+	display: inline-block;
+    padding: 10px;
+    text-decoration: none;
+    background: rgba(0,0,0,0.5);
+    color: #fff;
+    cursor: pointer;
+    position: fixed;
+    top:5px;
+    left:5px;
+    border: 2px solid #fff;
+    border-radius: 50px;
+    width: 40px;
+    height: 40px;
+    font-size: 30px;
+    text-align: center;
+}
+
+.ir-contacto:hover {
+	background: #000;
+}
+
+</style>
+</body>
+</html>
+
+{% endblock %}

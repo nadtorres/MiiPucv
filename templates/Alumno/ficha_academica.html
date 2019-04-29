@@ -1,0 +1,91 @@
+{% extends 'Base/base.html'%}
+{% block content %} 
+
+<form method="post">
+	{% csrf_token %}
+	<div>
+		<div class="form-group">
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li>
+                <div class="alert alert-success"> {{ message }}</div>
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+		<center>
+			<h1 class="page-header" id="perfilHeader">Ficha Académica</h1>
+		</center>
+	<div>
+		<div>
+			<div>
+				<h3 style="text-align: center;" id="h3"><p><small> Información básica</small></p></h3>
+					<div>
+						<hr>
+						{% for alumno in alumno%}
+							<h6 id="usuario"> {{ alumno.nombre}} {{alumno.apellido_pat}} {{alumno.apellido_mat}} </h6>
+							<h6 id="usuario"> {{ alumno.rut }}</h6>
+							<h6 id="usuario"> {{ alumno.mail }}</h6>
+							<h6 id="usuario"> {{ alumno.telefono }}</h6>
+						<hr>
+						{% endfor %}
+					</div>
+							<h3 style="text-align: center;" id="h3">Dirección Permanente <p><small> Ubicación </small></p></h3>
+					<div>
+						<hr>
+						{% for direccionalumno in direccion %}
+							<h6 id="usuario"> Región: {{ direccionalumno.region.nombre }}</h6>
+							<h6 id="usuario"> Provincia: {{ direccionalumno.provincia.nombre }}</h6>
+							<h6 id="usuario"> Comuna: {{ direccionalumno.comuna.nombre }}</h6>
+							<h6>Dirección: {{ direccionalumno.direccion }}</h6>
+						<hr>
+						{% endfor %}
+					</div>
+							<h3 style="text-align: center;" id="h3">Datos de Postulación <p><small> Postulación al Programa </small></p></h3>
+					{% if postulacion %}
+					{% for postulacion in postulacion %}
+					<div>
+						<hr>
+							<h6>Fecha Postulación: {{ postulacion.fecha_post}}</h6>
+							<h6>Universiad de Procedencia: {{ postulacion.universidad_procedencia }} </h6>
+							<h6>Carrera de Procedencia: {{ postulacion.carrera_procedencia }}</h6>
+							<h6>Estado de Nivelación: {{ postulacion.nivelacion }} </h6>
+							<h6>Semestre de ingreso: {{ postulacion.semestre_ingreso}} </h6>
+							<h6>Año de ingreso: {{ postulacion.anio_ingreso }}</h6>
+							<h6>Estado de Matrícula: {{ postulacion.estado_matricula }} </h6>
+							<h6>Antecedentes Académicos: {{ postulacion.antecedentes_academicos }} </h6>
+							<h6>Antecedentes Profesionales: {{ postulacion.antecedentes_profesionales }} </h6>
+							<h6>Carta de Recomendación: {{ postulacion.carta_recomendacion }} </h6>
+							<h6>Entrevista: {{ postulacion.entrevista }} </h6>
+							<h6>Puntaje Entrevista: {{ postulacion.puntaje }} </h6>
+							<h6>Resultados de la condición: {{ postulacion.resultados_condicion }} </h6>
+					</div>
+					{% endfor %}
+					{% else %}
+					<hr>
+					<br>
+						<h1 align="center">No hay registros de Postulación</h1>
+					<br>
+					<br>
+					{% for alumno in alumno%}
+					<center>
+	                    <a class="btn btn-primary" role="button" href="{% url 'agregar_datos_postulacion' pk=alumno.pk %}">
+	                    <i class="fa fa-fw fa-lg fa-plus-circle"></i>Agregar</a>&nbsp;&nbsp;
+					</center>
+					{% endfor %}
+					{% endif %}
+			</div>
+		</div>
+	</div>
+	<hr>
+	<div>
+</div>
+</div>
+</form>
+
+
+
+
+{% endblock %}

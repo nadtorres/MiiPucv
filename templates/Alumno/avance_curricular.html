@@ -1,0 +1,132 @@
+{% extends 'Base/base.html' %}
+{% load staticfiles %}
+{% load bootstrap4 %}
+
+{% block content%}
+
+<!-- BLOQUE JS PARA OBTENER AÑO ACTUAL !-->
+	<script>
+		var fecha = new Date();
+		var ano = fecha.getFullYear();
+	</script>
+
+	<center>
+		<h3 class="page-header" id="perfilHeader">Avance Curricular</h3>
+	</center>
+	<br>
+	<center>
+		<div class="alert alert-primary alert-dismissible fade show" role="alert">
+				<strong>¡Bienvenido!</strong> En esta sección encontrarás el avance curricular del alumno que has seleccionado. <br> Podrás ver todos los cursos que el alumno ha tomado y el estado de estos cursos.
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			    <span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+	</center>
+	<tbody>
+		{% if avance %}
+			{% for avance in avance %}
+				<tr>
+				<!-- PREGUNTAMOS SI EL AÑO ES DISTINTO AL ACTUAL PARA GENERAR LA ÚLTIMA TABLA !-->
+					{% if avance.anio_cursado != avance.anio_actual %}
+					<div class="table table-responsive">
+						<table class="table table-center table-hover table-bordered" style="border-collapse: colapse;" width="100%">
+					<thead class = table-head>
+						<tr>
+							<td align="center"><b>Clave</b></td>
+							<td align="center"><b>Nombre Asignatura</b></td>
+							<td align="center"><b>Año</b></td>
+							<td align="center"><b>Semestre</b></td>
+							<td align="center"><b>Créditos</b></td>
+							<td align="center"><b>Estado</b></td>
+							<td align="center"><b>Final</b></td>
+						</tr>
+						<br>
+					</thead>
+						{% for curso in avance.curso.all %}
+							<td width="20%" ><center>{{ curso.sigla }}</center></td>
+							<td width="20%" ><center>{{ curso.nombre }}</center></td>
+							<td width="20%" ><center>{{ avance.anio_cursado }}</center></td>
+							<td width="20%" ><center>{{ avance.semestre }}</center></td>
+							<td width="20%" ><center>{{ curso.creditos }}</center></td>
+						{% endfor %}
+							<td width="20%"><center>{{ avance.estado }}</center></td>
+								{% if avance.estado == 'Aprobado' %}
+									<td width="20%"><center><i class="fas fa-check"></i></center></td>
+								{% endif %}
+
+								{% if avance.estado == 'Rechazado' %}
+									<td width="20%"><center><i class="fas fa-times"></i></center></td>
+								{% endif %}
+
+								{% if avance.estado == 'En proceso' %}
+									<td width="20%"><center><i class="fas fa-spinner"></i></center></span></td>
+								{% endif %}
+
+								{% if avance.estado == 'Retiro' %}
+									<td width="20%"><center><i class="fas fa-file-excel"></i></center></td>
+								{% endif %}
+				{% endif %}
+				</div>
+				</tr>
+			<!-- SALTO DE LÍNEA QUE ME GENERA LAS TABLAS DINÁMICAS SEGÚN EL AÑO !-->
+			{% endfor %}
+			{% else %}
+			<h1 align="center">No hay registros de Avance Curricular</h1>
+		{% endif %}
+	    </tbody>
+	  </table>
+
+	    <!-- EL CÓDIGO SE REPITE PARA PODER GENERAR DE FORMA DINÁMICA LAS TABLAS HACIA ABAJO !-->
+
+	<div class="table table-responsive">
+
+		<table class="table table-center table-hover table-bordered" style="border-collapse: colapse;" width="100%">
+
+		<tbody>
+		{% if avance %}
+			{% for avance in avance %}
+				<tr>
+					<!-- PREGUNTAMOS SI EL AÑO ES IGUAL AL ACTUAL PARA GENERAR LA ÚLTIMA TABLA !-->
+					{% if avance.anio_cursado == avance.anio_actual %}
+						{% for curso in avance.curso.all %}
+							<td width="20%"><center>{{ curso.sigla }}</center></td>
+							<td width="20%"><center>{{ curso.nombre }}</center></td>
+							<td width="20%"><center>{{ avance.anio_cursado }}</center></td>
+							<td width="20%"><center>{{ avance.semestre }}</center></td>
+							<td width="20%"><center>{{ curso.creditos }}</center></td>
+						{% endfor %}
+							<td width="20%"><center>{{ avance.estado }}</center></td>
+								{% if avance.estado == 'Aprobado' %}
+									<td width="20%"><center><i class="fas fa-check"></i></center></td>
+								{% endif %}
+
+								{% if avance.estado == 'Rechazado' %}
+									<td width="20%"><center><i class="fas fa-times"></i></center></td>
+								{% endif %}
+
+								{% if avance.estado == 'En proceso' %}
+									<td width="20%"><center><i class="fas fa-spinner"></i></center></span></td>
+								{% endif %}
+
+								{% if avance.estado == 'Retiro' %}
+									<td width="20%"><center><i class="fas fa-file-excel"></i></center></td>
+								{% endif %}
+					{% endif %}
+				</tr>
+			{% endfor %}
+			{% else %}
+			<h1 align="center">No hay registros de Avance Curricular</h1>
+		{% endif %}
+	    </tbody>
+	</table>
+</div>
+
+<style>
+	.table.table-center {
+  width: auto;
+  margin: 0 auto;
+}
+</style>
+
+{% endblock %}
+
