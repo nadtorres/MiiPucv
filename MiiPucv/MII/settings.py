@@ -102,9 +102,9 @@ BOOTSTRAP4 = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'MII',
-        'USER': 'admin',
-        'PASSWORD': 'admin',
+        'NAME': 'urban_prod',
+        'USER': 'u_urban',
+        'PASSWORD': '123',
         'HOST': 'localhost',
         'PORT': '',
     }
